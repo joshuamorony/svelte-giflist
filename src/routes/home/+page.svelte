@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { getGifs, isLoading$ } from '$lib/data-access/reddit';
+	import { SvelteSubject } from '$lib/utils/subject';
 	import { IonPage } from 'ionic-svelte';
 	import { BehaviorSubject, combineLatest, map } from 'rxjs';
-	import { getGifs, isLoading$ } from '$lib/data-access/reddit';
-	import SearchBar from './ui/search-bar.svelte';
 	import GifList from './ui/gif-list.svelte';
-	import { SvelteSubject } from '$lib/utils/subject';
+	import SearchBar from './ui/search-bar.svelte';
 
 	const currentlyLoadingGifs$ = new BehaviorSubject<string[]>([]);
 	const loadedGifs$ = new BehaviorSubject<string[]>([]);
@@ -40,7 +40,7 @@
 			<SearchBar {subreddit$} />
 		</ion-toolbar>
 		{#if $isLoading$}
-			<ion-progress-bar data-test="loading-bar" color="dark" type="indeterminate" reversed={true} />
+			<ion-progress-bar color="dark" type="indeterminate" reversed={true} />
 		{/if}
 	</ion-header>
 	<ion-content>

@@ -8,6 +8,7 @@
 
 <style>
 	input {
+		width: 100%;
 		color: #000;
 	}
 </style>

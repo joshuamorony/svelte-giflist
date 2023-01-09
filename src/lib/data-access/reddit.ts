@@ -1,5 +1,5 @@
 import { settings$ } from '$lib/data-access/settings';
-import type { RedditPagination, RedditPost, RedditResponse } from '$lib/interfaces';
+import type { RedditPagination, RedditPost } from '$lib/interfaces';
 import {
 	BehaviorSubject,
 	catchError,
@@ -10,7 +10,6 @@ import {
 	EMPTY,
 	expand,
 	map,
-	of,
 	scan,
 	startWith,
 	switchMap,
@@ -26,12 +25,6 @@ const pagination$ = new BehaviorSubject<RedditPagination>({
 	retries: 0,
 	infiniteScroll: null
 });
-
-const testSubject = new BehaviorSubject<string>('');
-export const getGifsTest = (testValue: string) => {
-	testSubject.next(testValue);
-	return getGifs(testSubject);
-};
 
 export const getGifs = (formValues: BehaviorSubject<string>) => {
 	// Start with a default emission of 'gifs', then only emit when
