@@ -2,6 +2,8 @@
 	import type { Gif } from '$lib/interfaces';
 	import { Browser } from '@capacitor/browser';
 	import { createEventDispatcher } from 'svelte';
+	
+	import { chatbubbles } from 'ionicons/icons';
 
 	export let gifs: Gif[] | undefined;
 
@@ -79,7 +81,7 @@
 					<ion-label> {gif.title} </ion-label>
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<ion-button data-test="gif-comments-button" on:click={() => showComments(gif)}>
-						<ion-icon name="chatbubbles" />
+						<ion-icon icon={chatbubbles} />
 						{gif.comments}
 					</ion-button>
 				</ion-list-header>
