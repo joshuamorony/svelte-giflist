@@ -26,6 +26,8 @@ const pagination$ = new BehaviorSubject<RedditPagination>({
 	infiniteScroll: null
 });
 
+const test = 1;
+
 export const getGifs = (formValues: BehaviorSubject<string>) => {
 	// Start with a default emission of 'gifs', then only emit when
 	// subreddit changes

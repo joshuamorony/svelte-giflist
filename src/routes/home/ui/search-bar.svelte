@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { SvelteSubject } from '$lib/utils/subject';
 
-	export var subreddit$: SvelteSubject<string>;
+	export let subreddit$: SvelteSubject<string>;
 </script>
 
 <input type="text" bind:value={$subreddit$} />
