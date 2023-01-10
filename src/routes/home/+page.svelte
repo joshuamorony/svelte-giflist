@@ -3,7 +3,6 @@
 	import { SvelteSubject } from '$lib/utils/subject';
 	import { IonPage } from 'ionic-svelte';
 	import { BehaviorSubject, combineLatest, map } from 'rxjs';
-	import { onMount } from 'svelte';
 	import GifList from './ui/gif-list.svelte';
 	import SearchBar from './ui/search-bar.svelte';
 
@@ -33,19 +32,6 @@
 			...currentlyLoadingGifs$.value.filter((permalink) => !loadedGifs$.value.includes(permalink))
 		]);
 	};
-
-	const person = { name: 'Josh' };
-	$: personName = person.name;
-
-	const testSubject$ = new SvelteSubject<string>('init');
-
-	onMount(() => {
-		testSubject$.subscribe((val) => console.log(val));
-
-		setInterval(() => {
-			testSubject$.next('yo');
-		}, 5000);
-	});
 </script>
 
 <IonPage>
@@ -58,10 +44,6 @@
 		{/if}
 	</ion-header>
 	<ion-content>
-		<input bind:value={$testSubject$} />
-		{person.name}
-		{personName}
-		<button on:click={() => (person.name = 'Dave')}>Update</button>
 		<GifList
 			gifs={$gifs$}
 			on:gifLoadStart={(event) => setLoading(event.detail.permalink)}
